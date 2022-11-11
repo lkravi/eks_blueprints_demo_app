@@ -7,8 +7,8 @@ RUN apk add git
 RUN go build -o eks_bp_demo  .
 # Can run smoke unit test for build verification
 
-FROM alpine:3.14
+FROM golang:alpine
 WORKDIR /app
 COPY --from=builder /build/eks_bp_demo .
-EXPOSE 8000
+EXPOSE 8080
 ENTRYPOINT ["/app/eks_bp_demo"]
